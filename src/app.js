@@ -5,9 +5,12 @@ const path = require("path");
 const { hasSubscribers } = require("diagnostics_channel");
 
 const app = express();
-const htmlDir = path.join(__dirname, "../public");
 
 app.set("view engine", "hbs");
+
+const port = process.env.PORT || 3000;
+
+const htmlDir = path.join(__dirname, "../public");
 app.set("views", path.join(__dirname, "../templates/views"));
 hbs.registerPartials(path.join(__dirname, "../templates/partials"));
 
@@ -27,6 +30,19 @@ app.get("", (req, res) => {
 			title: "Weather app",
 			name: "Aayush",
 			para: "Use this site to get Weather!",
+			msg: data,
+		});
+	});
+});
+
+app.get("/weather", (req, res) => {
+	if (!req.query.search) {
+		return res.send({
+			error: "Please use search query",
+		});
+	}
+	forecast(req.query.search, res, (data) => {
+		res.send({
 			msg: data,
 		});
 	});
@@ -62,6 +78,6 @@ app.get("*", (req, res) => {
 	});
 });
 
-app.listen(3000, () => {
-	console.log("Yo your app is started baka!!");
+app.listen(port, () => {
+	console.log("Server is on port : " + port);
 });

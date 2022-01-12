@@ -14,19 +14,12 @@ weatherForm.addEventListener("submit", (e) => {
 	e.preventDefault();
 	message.textContent = "...Loading";
 	const search = location1.value;
-	fetch(
-		"http://api.weatherstack.com/current?access_key=c8c03b378ffe69cf754d2efb846ac60d&query=" +
-			search
-	).then((res) => {
+	fetch("/weather?search=" + search).then((res) => {
 		res.json().then((data) => {
 			if (data.error) {
-				message.textContent = data.error.info;
+				message.textContent = data.error;
 			} else {
-				message.textContent =
-					"For location " +
-					data.request.query +
-					" temperature is " +
-					data.current.temperature;
+				message.textContent = data.msg;
 			}
 		});
 	});
