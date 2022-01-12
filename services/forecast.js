@@ -1,6 +1,6 @@
 const request = require("request");
-const geoLocRequest = require("../../weather-app/services/geoLoc");
-const weatherRequest = require("../../weather-app/services/weather");
+const geoLocRequest = require("./geoLoc");
+const weatherRequest = require("./weather");
 
 const forecast = (address, res, callback) => {
 	geoLocRequest(address, (error, { latitude, longitude } = {}) => {
