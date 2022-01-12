@@ -14,11 +14,11 @@ const weatherRequest = (lat, long, address, callback) => {
 		} else {
 			callback(
 				undefined,
-				body.current.weather.description[0] +
+				body.current.weather_descriptions[0] +
 					". It is currently " +
 					body.current.temperature +
 					" degrees out. It feels like " +
-					baseModule.current.feelslike +
+					body.current.feelslike +
 					" degrees out. The humidity is " +
 					body.current.humidity
 			);
