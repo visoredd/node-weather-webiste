@@ -1,0 +1,44 @@
+h2 {
+	color: gray;
+	font-size: 64px;
+}
+
+body {
+	margin: 0 auto;
+	padding: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+	max-width: 650px;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.main-content {
+	flex-grow: 1;
+}
+
+footer {
+	padding: 16px 0;
+}
+header {
+	margin-bottom: 50px;
+}
+header a {
+	text-decoration: none;
+	color: gray;
+	margin-right: 16px;
+}
+footer hr {
+	color: beige;
+}
+input {
+	border: 1px solid #cccccc;
+	padding: 8px;
+}
+button {
+	cursor: pointer;
+	border: 1px solid #888888;
+	background: #888888;
+	color: white;
+	padding: 8px;
+}
